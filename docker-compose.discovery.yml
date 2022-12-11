@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+
+  etcd-discovery-cluster:
+    image: etcd-node:latest
+    build: .
+    entrypoint: bash ./entrypoint.sh
+    volumes:
+      - ./entrypoint.discovery.sh:/var/lib/etcd-data/entrypoint.sh
+
+  etcd-discovery:
+    image: etcd-discoveryserver
+    environment:
+      - DISC_ADDR=0.0.0.0:80
+      - DISC_ETCD=http://etcd-discovery-cluster:2379
+      - DISC_HOST=http://etcd-discovery:80
+
+
+networks:
+  default:
+    external:
+      name: etcd-cluster-network
+
