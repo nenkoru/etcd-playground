@@ -11,3 +11,9 @@ services:
       - .env
     deploy:
       replicas: 3
+
+networks:
+  default:
+    external:
+      name: etcd-cluster-network
+
