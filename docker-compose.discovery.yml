@@ -10,6 +10,7 @@ services:
 
   etcd-discovery:
     image: etcd-discoveryserver
+    build: etcd-discoveryserver/
     environment:
       - DISC_ADDR=0.0.0.0:80
       - DISC_ETCD=http://etcd-discovery-cluster:2379
