@@ -1,0 +1,3 @@
+[submodule "etcd-discoveryserver"]
+	path = etcd-discoveryserver
+	url = https://github.com/etcd-io/discoveryserver.git
